@@ -43,7 +43,7 @@ macro(add_parser name)
                           SOVERSION "${TREE_SITTER_ABI_VERSION}.${PROJECT_VERSION_MAJOR}"
                           DEFINE_SYMBOL "")
 
-    configure_file("${CMAKE_SOURCE_DIR}/bindings/c/tree-sitter-${name}.pc.in"
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/../bindings/c/tree-sitter-${name}.pc.in"
                    "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-${name}.pc" @ONLY)
 
     install(FILES "${CMAKE_SOURCE_DIR}/bindings/c/tree-sitter-${name}.h"
@@ -58,6 +58,6 @@ add_subdirectory(typescript tree-sitter-typescript)
 
 add_subdirectory(tsx tree-sitter-tsx)
 
-add_custom_target(ts-test "${TREE_SITTER_CLI}" test
+add_custom_target(ts-typescript-test "${TREE_SITTER_CLI}" test
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                   COMMENT "tree-sitter test")
